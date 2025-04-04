@@ -17,6 +17,7 @@ def fit_survival_model(df, draws=2000, tune=1000):
         Number of tuning steps
         
     Returns:
+    
     --------
     arviz.InferenceData
         Posterior samples and model information
