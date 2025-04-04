@@ -3,7 +3,8 @@ from survival_model import (
     fit_survival_model,
     plot_posterior_distributions,
     plot_survival_curves,
-    print_model_summary
+    print_model_summary,
+    calculate_concordance_index
 )
 
 def main():
@@ -17,6 +18,12 @@ def main():
     
     # Print model summary
     print_model_summary(trace)
+    
+    # Calculate concordance index
+    print("\nCalculating concordance index...")
+    concordance, concordance_results = calculate_concordance_index(trace, df)
+    print(f"Mean concordance index: {concordance:.3f}")
+    print(f"95% credible interval: [{concordance_results['ci_lower']:.3f}, {concordance_results['ci_upper']:.3f}]")
     
     # Plot results
     print("\nGenerating plots...")
